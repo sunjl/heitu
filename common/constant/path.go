@@ -1,0 +1,52 @@
+package constant
+
+const (
+	CreateUserPath  = "/user/create"
+	SignInUserPath  = "/user/sign_in"
+	GetUserPath     = "/user/get"
+	CountUserPath   = "/user/count"
+	ListAllUserPath = "/user/list_all"
+	ListUserPath    = "/user/list"
+	UpdateUserPath  = "/user/update"
+	DeleteUserPath  = "/user/delete"
+
+	CreateHostPath  = "/host/create"
+	GetHostPath     = "/host/get"
+	CountHostPath   = "/host/count"
+	ListAllHostPath = "/host/list_all"
+	ListHostPath    = "/host/list"
+	UpdateHostPath  = "/host/update"
+	DeleteHostPath  = "/host/delete"
+
+	CreateProjectPath  = "/project/create"
+	GetProjectPath     = "/project/get"
+	CountProjectPath   = "/project/count"
+	ListAllProjectPath = "/project/list_all"
+	ListProjectPath    = "/project/list"
+	UpdateProjectPath  = "/project/update"
+	DeleteProjectPath  = "/project/delete"
+
+	CreateConfigPath  = "/config/create"
+	GetConfigPath     = "/config/get"
+	CountConfigPath   = "/config/count"
+	ListAllConfigPath = "/config/list_all"
+	ListConfigPath    = "/config/list"
+	UpdateConfigPath  = "/config/update"
+	DeleteConfigPath  = "/config/delete"
+
+	CreateTaskPath  = "/task/create"
+	GetTaskPath     = "/task/get"
+	CountTaskPath   = "/task/count"
+	ListAllTaskPath = "/task/list_all"
+	ListTaskPath    = "/task/list"
+	UpdateTaskPath  = "/task/update"
+	DeleteTaskPath  = "/task/delete"
+
+	CreateServicePath  = "/service/create"
+	GetServicePath     = "/service/get"
+	CountServicePath   = "/service/count"
+	ListAllServicePath = "/service/list_all"
+	ListServicePath    = "/service/list"
+	UpdateServicePath  = "/service/update"
+	DeleteServicePath  = "/service/delete"
+)

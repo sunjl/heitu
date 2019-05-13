@@ -1,0 +1,21 @@
+{
+    "api": {
+        "address": "http://localhost:9000",
+        "user": {
+            "username": "test",
+            "password": "test",
+            "token": "47bfa2b8-2468-4c6e-8712-a5a240ea6ea7"
+        }
+    },
+    "grpc": {
+        "address": "localhost:50051"
+    },
+    "etcd": {
+        "endpoints": [
+            "localhost:2378",
+            "localhost:2379"
+        ],
+        "dialTimeout": 5,
+        "requestTimeout": 5
+    }
+}

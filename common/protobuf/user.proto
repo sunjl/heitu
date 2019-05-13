@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jishufan.heitu.client.protobuf";
+option java_outer_classname = "UserProto";
+
+package protobuf;
+
+import "github.com/golang/protobuf/ptypes/empty/empty.proto";
+import "github.com/golang/protobuf/ptypes/timestamp/timestamp.proto";
+import "github.com/golang/protobuf/ptypes/wrappers/wrappers.proto";
+import "common.proto";
+
+message User {
+    int32 id = 1;
+    string username = 2;
+    string password = 3;
+    string display_name = 4;
+    string phone = 5;
+    string user_type = 6;
+    string token = 7;
+    google.protobuf.Timestamp create_time = 8;
+    google.protobuf.Timestamp update_time = 9;
+}
+
+message Users {
+    repeated User items = 1;
+}
+
+message UserCredentials {
+    string username = 1;
+    string password = 2;
+}
+
+message UserUpdatePassword {
+    string username = 1;
+    string new_password = 2;
+}
+
+message UserPageRequest {
+    User user = 1;
+    PageRequest page_request = 2;
+}
+
+message UserPageResponse {
+    int32 page = 1;
+    int32 size = 2;
+    int32 count = 3;
+    repeated User items = 4;
+}
+
+service UserService {
+    rpc Create (User) returns (User);
+    rpc SignIn (UserCredentials) returns (User);
+    rpc Get (User) returns (User);
+    rpc Count (User) returns (google.protobuf.Int32Value);
+    rpc ListAll (UserPageRequest) returns (Users);
+    rpc List (UserPageRequest) returns (UserPageResponse);
+    rpc Update (User) returns (User);
+    rpc Delete (User) returns (google.protobuf.Empty);
+}

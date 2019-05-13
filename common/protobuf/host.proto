@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jishufan.heitu.client.protobuf";
+option java_outer_classname = "HostProto";
+
+package protobuf;
+
+import "github.com/golang/protobuf/ptypes/timestamp/timestamp.proto";
+import "github.com/golang/protobuf/ptypes/wrappers/wrappers.proto";
+import "common.proto";
+
+message Host {
+    int32 id = 1;
+    string group_name = 2;
+    string name = 3;
+    string ip = 4;
+    string processor = 5;
+    int32 memory = 6;
+    int32 disk = 7;
+    string platform = 8;
+    google.protobuf.Timestamp create_time = 9;
+    google.protobuf.Timestamp update_time = 10;
+}
+
+message Hosts {
+    repeated Host items = 1;
+}
+
+message HostPageRequest {
+    Host host = 1;
+    PageRequest page_request = 2;
+}
+
+message HostPageResponse {
+    int32 page = 1;
+    int32 size = 2;
+    int32 count = 3;
+    repeated Host items = 4;
+}
+
+service HostService {
+    rpc Greate (Host) returns (Host);
+    rpc Get (Host) returns (Host);
+    rpc Count (Host) returns (google.protobuf.Int32Value);
+    rpc ListAll (HostPageRequest) returns (Hosts);
+    rpc List (HostPageRequest) returns (HostPageResponse);
+    rpc Update (Host) returns (Host);
+    rpc Delete (Host) returns (google.protobuf.Int32Value);
+}

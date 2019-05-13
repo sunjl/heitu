@@ -1,0 +1,19 @@
+{
+    "mysql": {
+        "address": "localhost:3306",
+        "username": "dev",
+        "password": "dev",
+        "db": "heitu"
+    },
+    "grpc": {
+        "port": ":50051"
+    },
+    "etcd": {
+        "endpoints": [
+            "localhost:2378",
+            "localhost:2379"
+        ],
+        "dialTimeout": 5,
+        "requestTimeout": 5
+    }
+}

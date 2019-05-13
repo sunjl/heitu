@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jishufan.heitu.client.protobuf";
+option java_outer_classname = "TaskProto";
+
+package protobuf;
+
+import "github.com/golang/protobuf/ptypes/timestamp/timestamp.proto";
+import "github.com/golang/protobuf/ptypes/wrappers/wrappers.proto";
+import "common.proto";
+
+message Task {
+    int32 id = 1;
+    string host_name = 2;
+    string ip = 3;
+    string name = 4;
+    string content = 5;
+    string status = 6;
+    google.protobuf.Timestamp create_time = 7;
+    google.protobuf.Timestamp update_time = 8;
+}
+
+message Tasks {
+    repeated Task items = 1;
+}
+
+message TaskPageRequest {
+    Task task = 1;
+    PageRequest page_request = 2;
+}
+
+message TaskPageResponse {
+    int32 page = 1;
+    int32 size = 2;
+    int32 count = 3;
+    repeated Task items = 4;
+}
+
+service TaskService {
+    rpc Greate (Task) returns (Task);
+    rpc Get (Task) returns (Task);
+    rpc Count (Task) returns (google.protobuf.Int32Value);
+    rpc ListAll (TaskPageRequest) returns (Tasks);
+    rpc List (TaskPageRequest) returns (TaskPageResponse);
+    rpc Update (Task) returns (Task);
+    rpc Delete (Task) returns (google.protobuf.Int32Value);
+}

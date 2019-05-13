@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.jishufan.heitu.client.protobuf";
+option java_outer_classname = "ProjectProto";
+
+package protobuf;
+
+import "github.com/golang/protobuf/ptypes/timestamp/timestamp.proto";
+import "github.com/golang/protobuf/ptypes/wrappers/wrappers.proto";
+import "common.proto";
+
+message Project {
+    int32 id = 1;
+    string group_name = 2;
+    string name = 3;
+    string git = 4;
+    google.protobuf.Timestamp create_time = 5;
+    google.protobuf.Timestamp update_time = 6;
+}
+
+message Projects {
+    repeated Project items = 1;
+}
+
+message ProjectPageRequest {
+    Project project = 1;
+    PageRequest page_request = 2;
+}
+
+message ProjectPageResponse {
+    int32 page = 1;
+    int32 size = 2;
+    int32 count = 3;
+    repeated Project items = 4;
+}
+
+service ProjectService {
+    rpc Create (Project) returns (Project);
+    rpc Get (Project) returns (Project);
+    rpc Count (Project) returns (google.protobuf.Int32Value);
+    rpc ListAll (ProjectPageRequest) returns (Projects);
+    rpc List (ProjectPageRequest) returns (ProjectPageResponse);
+    rpc Update (Project) returns (Project);
+    rpc Delete (Project) returns (google.protobuf.Int32Value);
+}
